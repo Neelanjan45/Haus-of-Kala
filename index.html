@@ -58,7 +58,7 @@
     </div> -->
 
     <!-- Haus of Kalā Products -->
-    <div class="nav-item" data-view="products">
+    <div class="nav-item" data-view="coming-soon">
       <button aria-label="Haus of Kalā Products">
         <!-- PLACEHOLDER ICON — replace later with a custom product-house icon -->
         <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
@@ -117,7 +117,7 @@
   <nav class="brand-nav" aria-label="Our brands">
 
     <!-- SELVORA -->
-    <div class="brand-nav-item" data-brand="selvora">
+    <div class="brand-nav-item" data-brand="coming-soon">
       <button aria-label="Selvora">
         <!-- PLACEHOLDER ICON -->
         <svg class="brand-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
@@ -257,7 +257,7 @@
 
       <div class="product-list">
 
-        <a href="YOUR_STARTER_KIT_LINK_HERE" class="product-entry">
+        <a href="/coming-soon" class="product-entry">
           <div class="product-index">01</div>
           <div class="product-main">
             <h3>Perfumery Starter Kit</h3>
@@ -266,7 +266,7 @@
           <div class="product-status">Available</div>
         </a>
 
-        <a href="#" class="product-entry">
+        <a href="/coming-soon" class="product-entry">
           <div class="product-index">02</div>
           <div class="product-main">
             <h3>Room Spray</h3>
@@ -275,7 +275,7 @@
           <div class="product-status">Upcoming</div>
         </a>
 
-        <a href="#" class="product-entry">
+        <a href="/coming-soon" class="product-entry">
           <div class="product-index">03</div>
           <div class="product-main">
             <h3>Fabric Mist</h3>
@@ -284,7 +284,7 @@
           <div class="product-status">Upcoming</div>
         </a>
 
-        <a href="#" class="product-entry">
+        <a href="/coming-soon" class="product-entry">
           <div class="product-index">04</div>
           <div class="product-main">
             <h3>[Future Product]</h3>
@@ -297,6 +297,43 @@
     </div>
 
     <div class="watermark">MADE</div>
+  </section>
+
+
+  <!-- COMING SOON -->
+  <section class="view left-nav coming-soon" data-page="coming-soon">
+    <a href="/home" class="corner-logo">Haus of Kalā</a>
+
+    <div class="coming-soon-inner">
+      <div class="kicker">In the making</div>
+      <div class="coming-soon-mark" aria-hidden="true"></div>
+      <h1>Something considered<br>is taking shape.</h1>
+      <div class="coming-soon-line"></div>
+      <p>
+        We are taking our time with this one. Return soon to discover what the
+        house has been making.
+      </p>
+      <a href="/home" class="minimal-button">Return home</a>
+    </div>
+
+    <div class="watermark">SOON</div>
+  </section>
+  <section class="view brand-view coming-soon" data-page="brand-coming-soon">
+    <a href="/home" class="corner-logo">Haus of Kalā</a>
+
+    <div class="coming-soon-inner">
+      <div class="kicker">In the making</div>
+      <div class="coming-soon-mark" aria-hidden="true"></div>
+      <h1>Something considered<br>is taking shape.</h1>
+      <div class="coming-soon-line"></div>
+      <p>
+        We are taking our time with this one. Return soon to discover what the
+        house has been making.
+      </p>
+      <a href="/home" class="minimal-button">Return home</a>
+    </div>
+
+    <div class="watermark">SOON</div>
   </section>
 
 
@@ -358,20 +395,39 @@
       <div>
         <div class="kicker">Enquire</div>
         <div class="contact-large">Have an idea?<br>Let's talk.</div>
-        <a href="mailto:YOUR_EMAIL_HERE" class="minimal-button">Send us a message →</a>
+        <a href="mailto:hausofkala.brandhouse@gmail.com" class="minimal-button">Send us a message →</a>
       </div>
 
       <div class="contact-info">
-        <div class="contact-line"><small>Email</small><a href="mailto:YOUR_EMAIL_HERE">[YOUR_EMAIL]</a></div>
-        <div class="contact-line"><small>Phone / WhatsApp</small><a href="tel:YOUR_PHONE_HERE">[YOUR_PHONE]</a></div>
-        <div class="contact-line"><small>Instagram</small><a href="YOUR_INSTAGRAM_LINK_HERE" target="_blank">@[YOUR_HANDLE]</a></div>
-        <div class="contact-line"><small>Based in</small><span>[City, State, Country]</span></div>
+        <div class="contact-line"><small>Email</small><a href="mailto:hausofkala.brandhouse@gmail.com">hausofkala.brandhouse@gmail.com</a></div>
+        <!-- <div class="contact-line"><small>Phone / WhatsApp</small><a href="tel:YOUR_PHONE_HERE">[YOUR_PHONE]</a></div> -->
+        <div class="contact-line"><small>Instagram</small><a href="https://www.instagram.com/hausofkala.nexus/" target="_blank">@hausofkala.nexus</a></div>
+        <div class="contact-line"><small>Based in</small><span>Kolkata, West Bengal, India</span></div>
       </div>
     </div>
 
-    <div class="watermark">KALĀ</div>
+    <div class="watermark">IDEA</div>
   </section>
 
+
+  <!-- ENQUIRY MODAL -->
+  <div class="enquiry-modal" id="enquiryModal" role="dialog" aria-modal="true" aria-labelledby="enquiryTitle" aria-hidden="true">
+    <div class="enquiry-backdrop" data-enquiry-close></div>
+    <div class="enquiry-panel">
+      <button type="button" class="enquiry-close" aria-label="Close enquiry form" data-enquiry-close>&times;</button>
+      <div class="kicker">Start a conversation</div>
+      <h2 id="enquiryTitle">Tell us what<br>you are imagining.</h2>
+      <p class="enquiry-intro">Leave a few details and the house will be in touch.</p>
+      <form id="enquiryForm" class="enquiry-form">
+        <div class="form-field"><label for="enquiryName">Name</label><input id="enquiryName" name="name" type="text" autocomplete="name" required></div>
+        <div class="form-field"><label for="enquiryEmail">Email</label><input id="enquiryEmail" name="email" type="email" autocomplete="email" required></div>
+        <div class="form-field"><label for="enquiryPhone">Phone / WhatsApp</label><input id="enquiryPhone" name="phone" type="tel" autocomplete="tel" required></div>
+        <div class="form-field"><label for="enquiryMessage">Message</label><textarea id="enquiryMessage" name="message" rows="4" required></textarea></div>
+        <button type="submit" class="minimal-button enquiry-submit">Send enquiry &rarr;</button>
+        <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
 
   <!-- =========================================================
       SELVORA BRAND VIEW
@@ -396,7 +452,7 @@
           <span>[Founded / Launch Year]</span>
         </div>
 
-        <a href="YOUR_SELVORA_WEBSITE_HERE" target="_blank" class="brand-visit">
+        <a href="/coming-soon" class="brand-visit">
           Visit Selvora ↗
         </a>
       </div>
@@ -418,7 +474,7 @@
   <!-- =========================================================
       FUTURE BRAND 02
       ========================================================= -->
-  <section class="view brand-view" data-page="brand-two">
+  <!-- <section class="view brand-view" data-page="brand-two">
     <a href="/home" class="corner-logo">Haus of Kalā</a>
 
     <div class="brand-content">
@@ -436,7 +492,7 @@
           <span>[Status]</span>
         </div>
 
-        <a href="YOUR_BRAND_TWO_WEBSITE_HERE" target="_blank" class="brand-visit">
+        <a href="/coming-soon" target="_blank" class="brand-visit">
           Visit Brand ↗
         </a>
       </div>
@@ -448,13 +504,13 @@
     </div>
 
     <div class="watermark">[BRAND]</div>
-  </section>
+  </section> -->
 
 
   <!-- =========================================================
       FUTURE BRAND 03
       ========================================================= -->
-  <section class="view brand-view" data-page="brand-three">
+  <!-- <section class="view brand-view" data-page="brand-three">
     <a href="/home" class="corner-logo">Haus of Kalā</a>
 
     <div class="brand-content">
@@ -484,7 +540,7 @@
     </div>
 
     <div class="watermark">[BRAND]</div>
-  </section>
+  </section> -->
 
   </div>
   </div>
