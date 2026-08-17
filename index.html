@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>Haus of Kalā</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+    </head>
+
+<body>
+  <div class="site">
+
+    <!-- =========================================================
+        HOME
+        ========================================================= -->
+    <section class="home" id="homeView">
+      <div class="home-center">
+        <a href="/home" class="logo" aria-label="Haus of Kalā — Home">
+          <div class="logo-main">Haus of Kalā</div>
+          <div class="logo-sub">A Creative House</div>
+        </a>
+        <div class="home-line"></div>
+        <p class="tagline">Curious things, made tangible.</p>
+      </div>
+    </section>
+
+
+  <!-- =========================================================
+      LEFT NAVIGATION
+      ========================================================= -->
+  <nav class="side-nav left" aria-label="Main navigation">
+
+    <!-- The House -->
+    <div class="nav-item" data-view="house">
+      <button aria-label="The House">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+          <path d="M4 10.5 12 4l8 6.5"/>
+          <path d="M6.5 9.5V20h11V9.5"/>
+          <path d="M10 20v-5h4v5"/>
+        </svg>
+      </button>
+      <span class="nav-label">The House</span>
+    </div>
+
+    <!-- Experiences -->
+    <!-- <div class="nav-item" data-view="experiences">
+      <button aria-label="Experiences">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+          <path d="M7 4h10"/>
+          <path d="M8.5 4v4l-2 9.5A2 2 0 0 0 8.45 20h7.1a2 2 0 0 0 1.95-2.5L15.5 8V4"/>
+          <path d="M7.2 14h9.6"/>
+        </svg>
+      </button>
+      <span class="nav-label">Experiences</span>
+    </div> -->
+
+    <!-- Haus of Kalā Products -->
+    <div class="nav-item" data-view="products">
+      <button aria-label="Haus of Kalā Products">
+        <!-- PLACEHOLDER ICON — replace later with a custom product-house icon -->
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+          <path d="M5 8.5 12 4l7 4.5v8L12 20l-7-3.5z"/>
+          <path d="M5 8.5 12 12l7-3.5"/>
+          <path d="M12 12v8"/>
+        </svg>
+      </button>
+      <span class="nav-label">Products</span>
+    </div>
+
+    <!-- Collaborate -->
+    <!-- <div class="nav-item" data-view="collaborate">
+      <button aria-label="Collaborate">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+          <circle cx="7" cy="12" r="2.5"/>
+          <circle cx="17" cy="7" r="2.5"/>
+          <circle cx="17" cy="17" r="2.5"/>
+          <path d="m9.2 10.8 5.5-2.7M9.2 13.2l5.5 2.7"/>
+        </svg>
+      </button>
+      <span class="nav-label">Collaborate</span>
+    </div> -->
+
+    <!-- Journal -->
+    <!-- <div class="nav-item" data-view="journal">
+      <button aria-label="Journal">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+          <path d="M6 4.5h10.5A1.5 1.5 0 0 1 18 6v14H7.5A1.5 1.5 0 0 1 6 18.5z"/>
+          <path d="M6 18.5A1.5 1.5 0 0 1 7.5 17H18"/>
+          <path d="M9.5 8h5M9.5 11h5M9.5 14h3.5"/>
+        </svg>
+      </button>
+      <span class="nav-label">Journal</span>
+    </div> -->
+
+    <!-- Enquire -->
+    <div class="nav-item" data-view="contact">
+      <button aria-label="Enquire">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+          <path d="M5 19V5h9"/>
+          <path d="M11 12h8"/>
+          <path d="m15 8 4 4-4 4"/>
+        </svg>
+      </button>
+      <span class="nav-label">Enquire</span>
+    </div>
+
+  </nav>
+
+
+  <!-- =========================================================
+      RIGHT NAVIGATION — SUB-BRANDS
+      Replace placeholder SVGs later with custom brand icons.
+      ========================================================= -->
+  <nav class="brand-nav" aria-label="Our brands">
+
+    <!-- SELVORA -->
+    <div class="brand-nav-item" data-brand="selvora">
+      <button aria-label="Selvora">
+        <!-- PLACEHOLDER ICON -->
+        <svg class="brand-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+          <circle cx="12" cy="12" r="7"/>
+          <path d="M8 12c2-4 6-4 8 0-2 4-6 4-8 0Z"/>
+        </svg>
+      </button>
+      <span class="brand-nav-label">Selvora</span>
+    </div>
+
+    <!-- FUTURE BRAND -->
+    <!-- <div class="brand-nav-item" data-brand="brand-two">
+      <button aria-label="Future Brand"> -->
+        <!-- PLACEHOLDER ICON -->
+        <!-- <svg class="brand-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+          <path d="M12 3v18M3 12h18"/>
+          <circle cx="12" cy="12" r="7"/>
+        </svg>
+      </button>
+      <span class="brand-nav-label">[Future Brand]</span>
+    </div> -->
+
+  </nav>
+
+
+  <!-- =========================================================
+      CONTENT VIEWS
+      ========================================================= -->
+  <div class="view-layer">
+
+  <!-- HOUSE -->
+  <section class="view left-nav" data-page="house">
+    <a href="/home" class="corner-logo">Haus of Kalā</a>
+
+    <div class="view-inner house">
+      <div>
+        <div class="kicker">The House</div>
+        <h1 class="title">A place to begin</h1>
+        <p class="statement">
+          Haus of Kalā is an independent creative house exploring scent, objects, experiences and ideas — giving each one the space to develop, take shape and find its own character.</p>
+
+        <p class="statement">Some become products. Some become brands. Some become experiences shared with others. And some simply lead us to the next question.</p>
+
+        <p class="statement">There is no single medium here. Only the curiosity to make.</p>
+        <!-- <p class="statement">
+          Haus of Kalā is an independent creative house exploring scent,
+          objects, experiences and ideas that deserve to become tangible.
+        </p> -->
+      </div>
+
+      <div class="details">
+        <div class="detail">
+          <div class="detail-label">Philosophy</div>
+          <div class="detail-text">
+            <b>Curiosity first.</b>
+            <br>
+            <b>Craft follows.</b>
+            <br><br>
+            We believe good things often begin with a question, not a category. We explore slowly, make thoughtfully, and leave enough space for an idea to become what it wants to be.
+          </div>
+        </div>
+        <div class="detail">
+          <div class="detail-label">Based in</div>
+          <div class="detail-text">Kolkata, India</div>
+        </div>
+        <div class="detail">
+          <div class="detail-label">Founded</div>
+          <div class="detail-text">2025</div>
+        </div>
+        <!-- <div class="detail">
+          <div class="detail-label">Founder</div>
+          <div class="detail-text">[Founder Name]</div>
+        </div> -->
+      </div>
+    </div>
+
+    <div class="watermark">KALĀ</div>
+  </section>
+
+
+  <!-- EXPERIENCES -->
+  <section class="view left-nav" data-page="experiences">
+    <a href="/home" class="corner-logo">Haus of Kalā</a>
+
+    <div class="view-inner experience">
+      <div>
+        <div class="kicker">Experiences</div>
+        <h1 class="title">Made for<br>your table</h1>
+
+        <p class="copy">
+          Most experiences at Haus of Kalā are private and arranged on request.
+          From fragrance-making to intimate gatherings, the format can be shaped
+          around the people, occasion and idea.
+        </p>
+
+        <div class="experience-types">
+          <div class="experience-type"><strong>Perfume Making</strong><span>Private</span></div>
+          <div class="experience-type"><strong>Couples</strong><span>Private</span></div>
+          <div class="experience-type"><strong>Small Groups</strong><span>Private</span></div>
+          <div class="experience-type"><strong>Celebrations</strong><span>Custom</span></div>
+          <div class="experience-type"><strong>Corporate</strong><span>Custom</span></div>
+          <div class="experience-type"><strong>Public Workshops</strong><span>Occasional</span></div>
+        </div>
+      </div>
+
+      <div class="request-box">
+        <div class="kicker">By Request</div>
+        <h3>Tell us what<br>you're imagining.</h3>
+        <p>[Placeholder — enquiry process, group size, duration, location and relevant details.]</p>
+        <a href="YOUR_BOOKING_LINK_HERE" class="minimal-button">Make an enquiry →</a>
+      </div>
+    </div>
+
+    <div class="watermark">MAKE</div>
+  </section>
+
+
+  <!-- HAUS OF KALĀ PRODUCTS -->
+  <section class="view left-nav" data-page="products">
+    <a href="/home" class="corner-logo">Haus of Kalā</a>
+
+    <div class="view-inner products-layout">
+      <div class="products-intro">
+        <div class="kicker">Haus of Kalā / Products</div>
+
+        <h1 class="title">
+          Things made<br>
+          by the house.
+        </h1>
+
+        <p class="copy">
+          Products created directly under Haus of Kalā — separate from our
+          independent brands. Some are available now, while others are being
+          developed for the future.
+        </p>
+      </div>
+
+      <div class="product-list">
+
+        <a href="YOUR_STARTER_KIT_LINK_HERE" class="product-entry">
+          <div class="product-index">01</div>
+          <div class="product-main">
+            <h3>Perfumery Starter Kit</h3>
+            <p>[Placeholder — short description of the starter kit, what it contains and who it is intended for.]</p>
+          </div>
+          <div class="product-status">Available</div>
+        </a>
+
+        <a href="#" class="product-entry">
+          <div class="product-index">02</div>
+          <div class="product-main">
+            <h3>Room Spray</h3>
+            <p>[Placeholder — short description of the upcoming room spray.]</p>
+          </div>
+          <div class="product-status">Upcoming</div>
+        </a>
+
+        <a href="#" class="product-entry">
+          <div class="product-index">03</div>
+          <div class="product-main">
+            <h3>Fabric Mist</h3>
+            <p>[Placeholder — short description of the upcoming fabric mist.]</p>
+          </div>
+          <div class="product-status">Upcoming</div>
+        </a>
+
+        <a href="#" class="product-entry">
+          <div class="product-index">04</div>
+          <div class="product-main">
+            <h3>[Future Product]</h3>
+            <p>[Placeholder — future Haus of Kalā product.]</p>
+          </div>
+          <div class="product-status">In Development</div>
+        </a>
+
+      </div>
+    </div>
+
+    <div class="watermark">MADE</div>
+  </section>
+
+
+  <!-- COLLABORATE -->
+  <section class="view left-nav" data-page="collaborate">
+    <a href="/home" class="corner-logo">Haus of Kalā</a>
+
+    <div class="view-inner collab">
+      <div>
+        <div class="kicker">Collaborate</div>
+        <h1 class="title">Let's make<br>something unusual</h1>
+        <p class="copy">
+          Haus of Kalā works with brands, creators, spaces, communities and
+          event organisers on experiences and concepts that sit outside the ordinary.
+        </p>
+        <a href="mailto:YOUR_EMAIL_HERE" class="minimal-button">Start a conversation →</a>
+      </div>
+
+      <div class="collab-list">
+        <article class="collab-entry"><span>[2026]</span><div><h3>[Collaboration Name]</h3><p>[Partner] · [Short description]</p></div></article>
+        <article class="collab-entry"><span>[2026]</span><div><h3>[Collaboration Name]</h3><p>[Partner] · [Short description]</p></div></article>
+        <article class="collab-entry"><span>[2026]</span><div><h3>[Collaboration Name]</h3><p>[Partner] · [Short description]</p></div></article>
+        <article class="collab-entry"><span>[Future]</span><div><h3>Your idea could be next.</h3><p>Tell us what you're working on.</p></div></article>
+      </div>
+    </div>
+
+    <div class="watermark">TOGETHER</div>
+  </section>
+
+
+  <!-- JOURNAL -->
+  <section class="view left-nav" data-page="journal">
+    <a href="/home" class="corner-logo">Haus of Kalā</a>
+
+    <div class="view-inner journal">
+      <div>
+        <div class="kicker">Journal</div>
+        <h1 class="title">Notes from<br>the house</h1>
+        <p class="copy">[Placeholder — introduction to journal entries, launches, behind-the-scenes stories and announcements.]</p>
+      </div>
+
+      <div class="journal-list">
+        <article class="journal-entry"><div class="journal-meta">[Date] · [Category]</div><h3>[Article / Announcement Title]</h3><p>[Short description]</p></article>
+        <article class="journal-entry"><div class="journal-meta">[Date] · [Category]</div><h3>[Article / Announcement Title]</h3><p>[Short description]</p></article>
+        <article class="journal-entry"><div class="journal-meta">[Date] · [Category]</div><h3>[Article / Announcement Title]</h3><p>[Short description]</p></article>
+        <article class="journal-entry"><div class="journal-meta">[Date] · [Category]</div><h3>[Article / Announcement Title]</h3><p>[Short description]</p></article>
+      </div>
+    </div>
+
+    <div class="watermark">NOTES</div>
+  </section>
+
+
+  <!-- CONTACT -->
+  <section class="view left-nav" data-page="contact">
+    <a href="/home" class="corner-logo">Haus of Kalā</a>
+
+    <div class="view-inner contact">
+      <div>
+        <div class="kicker">Enquire</div>
+        <div class="contact-large">Have an idea?<br>Let's talk.</div>
+        <a href="mailto:YOUR_EMAIL_HERE" class="minimal-button">Send us a message →</a>
+      </div>
+
+      <div class="contact-info">
+        <div class="contact-line"><small>Email</small><a href="mailto:YOUR_EMAIL_HERE">[YOUR_EMAIL]</a></div>
+        <div class="contact-line"><small>Phone / WhatsApp</small><a href="tel:YOUR_PHONE_HERE">[YOUR_PHONE]</a></div>
+        <div class="contact-line"><small>Instagram</small><a href="YOUR_INSTAGRAM_LINK_HERE" target="_blank">@[YOUR_HANDLE]</a></div>
+        <div class="contact-line"><small>Based in</small><span>[City, State, Country]</span></div>
+      </div>
+    </div>
+
+    <div class="watermark">KALĀ</div>
+  </section>
+
+
+  <!-- =========================================================
+      SELVORA BRAND VIEW
+      ========================================================= -->
+  <section class="view brand-view" data-page="brand-selvora">
+    <a href="/home" class="corner-logo">Haus of Kalā</a>
+
+    <div class="brand-content">
+
+      <div class="brand-intro">
+        <div class="kicker">A Haus of Kalā Brand</div>
+
+        <div class="brand-name-large">Selvora</div>
+
+        <p class="brand-description">
+          [Placeholder — short Selvora description. Introduce the brand,
+          its philosophy, fragrance direction and what makes it distinct.]
+        </p>
+
+        <div class="brand-meta">
+          <span>[Category]</span>
+          <span>[Founded / Launch Year]</span>
+        </div>
+
+        <a href="YOUR_SELVORA_WEBSITE_HERE" target="_blank" class="brand-visit">
+          Visit Selvora ↗
+        </a>
+      </div>
+
+      <div class="brand-image">
+        <!-- Replace this block with the Selvora logo, campaign image,
+            product photograph or other brand visual. -->
+        <div class="brand-image-placeholder">
+          [Selvora Logo / Image]
+        </div>
+      </div>
+
+    </div>
+
+    <div class="watermark">SELVORA</div>
+  </section>
+
+
+  <!-- =========================================================
+      FUTURE BRAND 02
+      ========================================================= -->
+  <section class="view brand-view" data-page="brand-two">
+    <a href="/home" class="corner-logo">Haus of Kalā</a>
+
+    <div class="brand-content">
+
+      <div class="brand-intro">
+        <div class="kicker">A Haus of Kalā Brand</div>
+        <div class="brand-name-large">[Brand Two]</div>
+
+        <p class="brand-description">
+          [Placeholder — description of the second brand.]
+        </p>
+
+        <div class="brand-meta">
+          <span>[Category]</span>
+          <span>[Status]</span>
+        </div>
+
+        <a href="YOUR_BRAND_TWO_WEBSITE_HERE" target="_blank" class="brand-visit">
+          Visit Brand ↗
+        </a>
+      </div>
+
+      <div class="brand-image">
+        <div class="brand-image-placeholder">[Brand Logo / Image]</div>
+      </div>
+
+    </div>
+
+    <div class="watermark">[BRAND]</div>
+  </section>
+
+
+  <!-- =========================================================
+      FUTURE BRAND 03
+      ========================================================= -->
+  <section class="view brand-view" data-page="brand-three">
+    <a href="/home" class="corner-logo">Haus of Kalā</a>
+
+    <div class="brand-content">
+
+      <div class="brand-intro">
+        <div class="kicker">A Haus of Kalā Brand</div>
+        <div class="brand-name-large">[Brand Three]</div>
+
+        <p class="brand-description">
+          [Placeholder — description of the third brand.]
+        </p>
+
+        <div class="brand-meta">
+          <span>[Category]</span>
+          <span>[Status]</span>
+        </div>
+
+        <a href="YOUR_BRAND_THREE_WEBSITE_HERE" target="_blank" class="brand-visit">
+          Visit Brand ↗
+        </a>
+      </div>
+
+      <div class="brand-image">
+        <div class="brand-image-placeholder">[Brand Logo / Image]</div>
+      </div>
+
+    </div>
+
+    <div class="watermark">[BRAND]</div>
+  </section>
+
+  </div>
+  </div>
+
+  <script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,680 @@
+:root{
+  /* --black:#111;
+  --white:#fafafa; */
+  --grey:#696E68;
+  --black:#2f3a32;
+  --white:#f7f4ee;
+  --line:#e5e5e5;
+  --serif:"Cormorant Garamond",Georgia,serif;
+  --sans:"Work Sans", sans-serif;
+  --ease:cubic-bezier(.22,.61,.36,1)
+}
+
+*{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0
+}
+
+html,body{width:100%;height:100%;overflow:hidden}
+body{background:var(--white);color:var(--black);font-family:var(--sans);-webkit-font-smoothing:antialiased}
+button,a{font:inherit;color:inherit}
+button{border:0;background:none}
+a{text-decoration:none}
+
+.site{position:relative;width:100vw;height:100vh;overflow:hidden;background:var(--white)}
+
+/* =========================================================
+   HOME
+   ========================================================= */
+.home{
+  position:absolute;
+  inset:0;
+  display:grid;
+  place-items:center;
+  z-index:2;
+  transition:.65s var(--ease)
+}
+.home.hidden{opacity:0;transform:scale(.985);pointer-events:none}
+.home-center{text-align:center;transform:translateY(-2vh)}
+.logo{display:inline-block;cursor:pointer}
+.logo-main{
+  font-family:var(--serif);
+  font-size:clamp(4.5rem,10vw,9rem);
+  font-weight:500;
+  line-height:.78;
+  letter-spacing:0.025em;
+  word-spacing: 0.1em;
+}
+.logo-sub{
+  margin-top:18px;
+  color:var(--grey);
+  font-size:.88rem;
+  letter-spacing:.28em;
+  text-transform:uppercase
+}
+.home-line{width:28px;height:1px;margin:27px auto 20px;background:#ccc}
+.tagline{
+  color:#686868;
+  font-family:var(--serif);
+  font-size:clamp(1rem,1.6vw,2rem);
+  font-style:italic
+}
+
+/* =========================================================
+   LEFT NAVIGATION — HOUSE / EXPERIENCES / COLLAB / JOURNAL / ENQUIRE
+   ========================================================= */
+.side-nav{
+  position:fixed;
+  z-index:30;
+  top:50%;
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+  transform:translateY(-50%)
+}
+.side-nav.left{left:28px}
+
+.nav-item{
+  position:relative;
+  display:flex;
+  align-items:center;
+  cursor:pointer
+}
+.nav-item button{
+  width:30px;
+  height:30px;
+  display:grid;
+  place-items:center;
+  cursor:pointer
+}
+.nav-icon{
+  width:18px;
+  height:18px;
+  display:block;
+  transition:.35s var(--ease)
+}
+.nav-item:hover .nav-icon{transform:scale(1.12)}
+.nav-item.active .nav-icon{opacity:.35}
+
+.nav-label{
+  position:absolute;
+  top:50%;
+  left:38px;
+  white-space:nowrap;
+  font-size:.64rem;
+  font-weight:500;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+  opacity:0;
+  pointer-events:none;
+  transform:translate(-5px,-50%);
+  transition:.25s
+}
+.nav-item:hover .nav-label{
+  opacity:1;
+  transform:translate(0,-50%)
+}
+
+/* =========================================================
+   RIGHT NAVIGATION — SUB-BRANDS
+   ========================================================= */
+.brand-nav{
+  position:fixed;
+  z-index:30;
+  top:50%;
+  right:28px;
+  display:flex;
+  flex-direction:column;
+  gap:16px;
+  transform:translateY(-50%)
+}
+
+.brand-nav .brand-nav-item{
+  position:relative;
+  display:flex;
+  justify-content:flex-end;
+  align-items:center;
+  cursor:pointer
+}
+
+.brand-nav button{
+  width:30px;
+  height:30px;
+  display:grid;
+  place-items:center;
+  cursor:pointer
+}
+
+.brand-nav-icon{
+  width:19px;
+  height:19px;
+  display:block;
+  transition:.35s var(--ease)
+}
+
+.brand-nav-item:hover .brand-nav-icon{
+  transform:scale(1.12)
+}
+
+.brand-nav-item.active .brand-nav-icon{
+  opacity:.35
+}
+
+.brand-nav-label{
+  position:absolute;
+  top:50%;
+  right:38px;
+  white-space:nowrap;
+  color:var(--black);
+  font-size:.64rem;
+  font-weight:500;
+  letter-spacing:.13em;
+  text-transform:uppercase;
+  opacity:0;
+  pointer-events:none;
+  transform:translate(5px,-50%);
+  transition:.25s
+}
+
+.brand-nav-item:hover .brand-nav-label{
+  opacity:1;
+  transform:translate(0,-50%)
+}
+
+/* =========================================================
+   CONTENT VIEWS
+   ========================================================= */
+.view-layer{
+  position:absolute;
+  inset:0;
+  z-index:10;
+  pointer-events:none
+}
+
+.view{
+  position:absolute;
+  inset:0;
+  display:flex;
+  align-items:center;
+  padding:80px 9vw 80px 6vw;
+  background:var(--white);
+  opacity:0;
+  visibility:hidden;
+  transform:translateX(3vw);
+  transition:
+    opacity .55s var(--ease),
+    transform .65s var(--ease),
+    visibility 0s linear .65s;
+  pointer-events:none
+}
+
+.view.active{
+  opacity:1;
+  visibility:visible;
+  transform:translateX(0);
+  transition:
+    opacity .55s var(--ease),
+    transform .65s var(--ease),
+    visibility 0s;
+  pointer-events:auto
+}
+
+.view-inner{
+  width:min(1100px,100%);
+  margin:auto
+}
+
+.corner-logo{
+  position:absolute;
+  top:30px;
+  font-family:var(--serif);
+  font-size:1.8rem;
+  font-weight:500;
+  letter-spacing:-.035em;
+  cursor:pointer
+}
+
+/* Left navigation views place logo on opposite side */
+.view.left-nav .corner-logo{right:34px}
+
+/* Brand views place logo back on the left */
+.view.brand-view .corner-logo{left:34px}
+
+.kicker{
+  margin-bottom:17px;
+  color:var(--grey);
+  font-size:.63rem;
+  font-weight:600;
+  letter-spacing:.18em;
+  text-transform:uppercase
+}
+
+.title{
+  max-width:850px;
+  font-family:var(--serif);
+  font-size:clamp(4rem,8vw,8rem);
+  font-weight:400;
+  line-height:.82;
+  letter-spacing:-.04em;
+  text-transform:capitalize;
+}
+
+.copy{
+  max-width:620px;
+  margin-top:30px;
+  color:#666;
+  font-size:.9rem;
+  line-height:1.8
+}
+
+/* =========================================================
+   HOUSE
+   ========================================================= */
+.house{
+  display:grid;
+  width: 100%;
+  max-width: 1400px;
+  grid-template-columns: 1.1fr .9fr;
+  gap: clamp(48px, 6vw, 110px);
+  align-items:center
+}
+
+.house .title {
+  font-size: clamp(3.6rem, 6.8vw, 6.8rem);
+}
+
+.statement{
+  width:91%;
+  margin-top:75px;
+  padding-left:20px;
+  border-left:1px solid #bbb;
+  color:#4b514c;
+  font-family:var(--serif);
+  font-size:clamp(1.35rem, 2.1vw, 1.95rem);
+  line-height:1.1;
+  text-align: justify;
+}
+
+.statement:not(:first-of-type) {
+  margin-top: 25px;
+}
+
+.details{
+  border-top:1px solid #bbb
+}
+.detail{
+  padding:18px 0;
+  border-bottom:1px solid var(--line)
+}
+.detail-label{
+  color:var(--grey);
+  font-size:.8rem;
+  font-weight:600;
+  letter-spacing:.15em;
+  text-transform:uppercase
+}
+.detail-text{
+  margin-top:7px;
+  color:#4b514c;
+  font-size:1rem;
+  line-height:1.6;
+  text-align: justify;
+}
+
+/* =========================================================
+   EXPERIENCES
+   ========================================================= */
+.experience{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8vw;
+  align-items:center
+}
+.experience-types{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:0 25px;
+  margin-top:35px;
+  border-top:1px solid #bbb
+}
+.experience-type{
+  padding:17px 0;
+  border-bottom:1px solid var(--line)
+}
+.experience-type strong{
+  display:block;
+  font-family:var(--serif);
+  font-size:1.45rem;
+  font-weight:500
+}
+.experience-type span{
+  display:block;
+  margin-top:3px;
+  color:var(--grey);
+  font-size:.62rem;
+  letter-spacing:.08em;
+  text-transform:uppercase
+}
+.request-box{
+  padding:42px;
+  border:1px solid var(--line)
+}
+.request-box h3{
+  font-family:var(--serif);
+  font-size:3.2rem;
+  font-weight:400;
+  line-height:.9
+}
+.request-box p{
+  margin-top:20px;
+  color:#666;
+  font-size:.82rem;
+  line-height:1.7
+}
+.minimal-button{
+  display:inline-flex;
+  gap:13px;
+  margin-top:28px;
+  padding-bottom:7px;
+  border-bottom:1px solid var(--black);
+  font-size:.62rem;
+  font-weight:600;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  transition:.25s var(--ease)
+}
+.minimal-button:hover{gap:20px}
+
+/* =========================================================
+   HAUS OF KALĀ PRODUCTS
+   ========================================================= */
+.products-layout{
+  display:grid;
+  grid-template-columns:.85fr 1.15fr;
+  gap:8vw;
+  align-items:center
+}
+.products-intro{align-self:center}
+.product-list{border-top:1px solid #bbb}
+.product-entry{
+  display:grid;
+  grid-template-columns:48px 1fr auto;
+  gap:22px;
+  align-items:center;
+  padding:22px 0;
+  border-bottom:1px solid var(--line);
+  transition:padding .3s var(--ease)
+}
+.product-entry:hover{padding-left:8px}
+.product-index{
+  color:var(--grey);
+  font-size:.6rem;
+  letter-spacing:.12em
+}
+.product-main h3{
+  font-family:var(--serif);
+  font-size:2rem;
+  font-weight:500;
+  line-height:1
+}
+.product-main p{
+  max-width:480px;
+  margin-top:7px;
+  color:#777;
+  font-size:.75rem;
+  line-height:1.5
+}
+.product-status{
+  color:var(--grey);
+  font-size:.58rem;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+  white-space:nowrap
+}
+
+/* =========================================================
+   COLLABORATE
+   ========================================================= */
+.collab{
+  display:grid;
+  grid-template-columns:.8fr 1.2fr;
+  gap:9vw;
+  align-items:center
+}
+.collab-list{
+  border-top:1px solid #bbb
+}
+.collab-entry{
+  display:grid;
+  grid-template-columns:80px 1fr;
+  gap:25px;
+  padding:22px 0;
+  border-bottom:1px solid var(--line)
+}
+.collab-entry>span{
+  color:var(--grey);
+  font-size:.6rem;
+  letter-spacing:.12em
+}
+.collab-entry h3{
+  font-family:var(--serif);
+  font-size:2rem;
+  font-weight:500;
+  line-height:1
+}
+.collab-entry p{
+  margin-top:6px;
+  color:#777;
+  font-size:.75rem
+}
+
+/* =========================================================
+   JOURNAL
+   ========================================================= */
+.journal{
+  display:grid;
+  grid-template-columns:.8fr 1.2fr;
+  gap:9vw;
+  align-items:center
+}
+.journal-list{
+  border-top:1px solid #bbb
+}
+.journal-entry{
+  padding:20px 0;
+  border-bottom:1px solid var(--line)
+}
+.journal-meta{
+  color:var(--grey);
+  font-size:.58rem;
+  letter-spacing:.1em;
+  text-transform:uppercase
+}
+.journal-entry h3{
+  margin-top:7px;
+  font-family:var(--serif);
+  font-size:2rem;
+  font-weight:500;
+  line-height:1
+}
+.journal-entry p{
+  max-width:500px;
+  margin-top:7px;
+  color:#777;
+  font-size:.75rem
+}
+
+/* =========================================================
+   CONTACT
+   ========================================================= */
+.contact{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8vw;
+  align-items:center
+}
+.contact-large{
+  max-width:700px;
+  font-family:var(--serif);
+  font-size:clamp(3rem,6vw,6rem);
+  line-height:.86;
+  letter-spacing:-.03em
+}
+.contact-info{
+  border-top:1px solid #bbb
+}
+.contact-line{
+  padding:18px 0;
+  border-bottom:1px solid var(--line)
+}
+.contact-line small{
+  display:block;
+  margin-bottom:5px;
+  color:var(--grey);
+  font-size:.58rem;
+  font-weight:600;
+  letter-spacing:.15em;
+  text-transform:uppercase
+}
+.contact-line a,.contact-line span{
+  font-family:var(--serif);
+  font-size:1.65rem
+}
+
+/* =========================================================
+   BRAND VIEW
+   ========================================================= */
+.brand-view{
+  background:var(--white)
+}
+
+.brand-content{
+  width:min(1150px,100%);
+  display:grid;
+  grid-template-columns:.95fr 1.05fr;
+  gap:9vw;
+  align-items:center;
+  margin:auto
+}
+
+.brand-intro{
+  align-self:center
+}
+
+.brand-name-large{
+  font-family:var(--serif);
+  font-size:clamp(5rem,10vw,10rem);
+  font-weight:400;
+  line-height:.72;
+  letter-spacing:-.05em
+}
+
+.brand-description{
+  max-width:510px;
+  margin-top:35px;
+  color:#5f5f5f;
+  font-size:.9rem;
+  line-height:1.8
+}
+
+.brand-visit{
+  display:inline-flex;
+  gap:13px;
+  margin-top:30px;
+  padding-bottom:7px;
+  border-bottom:1px solid var(--black);
+  font-size:.62rem;
+  font-weight:600;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+  transition:.25s var(--ease)
+}
+.brand-visit:hover{gap:20px}
+
+.brand-image{
+  height:min(62vh,600px);
+  min-height:360px;
+  display:grid;
+  place-items:center;
+  border:1px solid var(--line);
+  background:#f3f3f3;
+  overflow:hidden
+}
+
+.brand-image img{
+  width:100%;
+  height:100%;
+  object-fit:cover
+}
+
+.brand-image-placeholder{
+  color:#aaa;
+  font-family:var(--serif);
+  font-size:2rem;
+  text-align:center
+}
+
+.brand-meta{
+  display:flex;
+  gap:25px;
+  margin-top:22px;
+  color:var(--grey);
+  font-size:.6rem;
+  letter-spacing:.12em;
+  text-transform:uppercase
+}
+
+/* =========================================================
+   WATERMARK
+   ========================================================= */
+.watermark{
+  position:absolute;
+  right:4vw;
+  bottom:-1.5vw;
+  color:rgba(0,0,0,.025);
+  font-family:var(--serif);
+  font-size:clamp(8rem,18vw,18rem);
+  line-height:.7;
+  pointer-events:none
+}
+
+/* =========================================================
+   RESPONSIVE
+   ========================================================= */
+@media(max-width:850px){
+  .side-nav.left{left:13px}
+  .brand-nav{right:13px}
+  .nav-label,.brand-nav-label{display:none}
+  .view{
+    padding:90px 65px 50px;
+    overflow-y:auto
+  }
+  .house,.experience,.products-layout,.collab,.journal,.contact,.brand-content{
+    grid-template-columns:1fr;
+    gap:45px
+  }
+  .brand-image{
+    height:420px;
+    min-height:300px
+  }
+}
+
+@media(max-width:560px){
+  .logo-main{font-size:clamp(4rem,18vw,6rem)}
+  .tagline{padding:0 25px}
+  .side-nav.left{left:8px}
+  .brand-nav{right:8px}
+  .side-nav,.brand-nav{gap:8px}
+  .nav-item button,.brand-nav button{width:28px;height:28px}
+  .view{padding:90px 48px 40px}
+  .corner-logo{top:25px;font-size:1.5rem}
+  .view.left-nav .corner-logo{right:20px}
+  .view.brand-view .corner-logo{left:20px}
+  .title{font-size:clamp(3.3rem,16vw,5rem)}
+  .experience-types{grid-template-columns:1fr}
+  .request-box{padding:28px}
+  .request-box h3{font-size:2.6rem}
+  .brand-name-large{font-size:clamp(4rem,18vw,7rem)}
+  .brand-image{height:330px;min-height:250px}
+}
