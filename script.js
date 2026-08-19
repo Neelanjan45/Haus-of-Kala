@@ -4,7 +4,7 @@ const brandItems = document.querySelectorAll(".brand-nav-item");
 const views = document.querySelectorAll(".view");
 
 const routes = {
-  home: "/home",
+  home: "/",
   house: "/house",
   products: "/products",
   contact: "/contact",
