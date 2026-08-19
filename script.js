@@ -139,7 +139,7 @@ document.querySelectorAll('a[href^="/"]').forEach(link => {
 window.addEventListener("popstate", loadFromPath);
 loadFromPath();
 
-const GOOGLE_SHEET_WEB_APP_URL = "PASTE_YOUR_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE";
+const GOOGLE_SHEET_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzW5PZdSSjRQaMB5JRJvnV5E1JsHmtNOR-uL7Fz5wkAB1oDeSHlvtCpnxLcMMvfJnJbeA/exec";
 const enquiryModal = document.getElementById("enquiryModal");
 const enquiryForm = document.getElementById("enquiryForm");
 const formStatus = document.getElementById("formStatus");
