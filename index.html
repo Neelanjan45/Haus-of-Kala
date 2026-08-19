@@ -117,16 +117,16 @@
   <nav class="brand-nav" aria-label="Our brands">
 
     <!-- SELVORA -->
-    <div class="brand-nav-item" data-brand="selvora">
+    <!-- <div class="brand-nav-item" data-brand="selvora">
       <button aria-label="Selvora">
-        <!-- PLACEHOLDER ICON -->
+        
         <svg class="brand-nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
           <circle cx="12" cy="12" r="7"/>
           <path d="M8 12c2-4 6-4 8 0-2 4-6 4-8 0Z"/>
         </svg>
       </button>
       <span class="brand-nav-label">Selvora</span>
-    </div>
+    </div> -->
 
     <!-- FUTURE BRAND -->
     <!-- <div class="brand-nav-item" data-brand="brand-two">
@@ -402,10 +402,22 @@
       <h2 id="enquiryTitle">Tell us what<br>you are imagining.</h2>
       <p class="enquiry-intro">Leave a few details and the house will be in touch.</p>
       <form id="enquiryForm" class="enquiry-form">
-        <div class="form-field"><label for="enquiryName">Name</label><input id="enquiryName" name="name" type="text" autocomplete="name" required></div>
-        <div class="form-field"><label for="enquiryEmail">Email</label><input id="enquiryEmail" name="email" type="email" autocomplete="email" required></div>
-        <div class="form-field"><label for="enquiryPhone">Phone / WhatsApp</label><input id="enquiryPhone" name="phone" type="tel" autocomplete="tel" required></div>
-        <div class="form-field"><label for="enquiryMessage">Message</label><textarea id="enquiryMessage" name="message" rows="4" required></textarea></div>
+        <div class="form-field">
+          <label for="enquiryName">Name</label>
+          <input id="enquiryName" name="name" type="text" autocomplete="name" required>
+        </div>
+        <div class="form-field">
+          <label for="enquiryEmail">Email</label>
+          <input id="enquiryEmail" name="email" type="email" autocomplete="email" required>
+        </div>
+        <div class="form-field">
+          <label for="enquiryPhone">Phone / WhatsApp</label>
+          <input id="enquiryPhone" name="phone" type="tel" autocomplete="tel" required>
+        </div>
+        <div class="form-field">
+          <label for="enquiryMessage">Message</label>
+          <textarea id="enquiryMessage" name="message" rows="4" required></textarea>
+        </div>
         <button type="submit" class="minimal-button enquiry-submit">Send enquiry &rarr;</button>
         <p class="form-status" id="formStatus" role="status" aria-live="polite"></p>
       </form>

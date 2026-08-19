@@ -139,7 +139,7 @@ document.querySelectorAll('a[href^="/"]').forEach(link => {
 window.addEventListener("popstate", loadFromPath);
 loadFromPath();
 
-const GOOGLE_SHEET_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzW5PZdSSjRQaMB5JRJvnV5E1JsHmtNOR-uL7Fz5wkAB1oDeSHlvtCpnxLcMMvfJnJbeA/exec";
+const GOOGLE_SHEET_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbwJlKyjMkLvzDksNRyDUOeb7RnYrhu6QjDh8rp4SEC8Uj_duOjJI0J5Zc6D3EnB4OKjEg/exec";
 const enquiryModal = document.getElementById("enquiryModal");
 const enquiryForm = document.getElementById("enquiryForm");
 const formStatus = document.getElementById("formStatus");
@@ -170,27 +170,40 @@ window.addEventListener("keydown", event => {
 });
 
 enquiryForm.addEventListener("submit", async event => {
+
   event.preventDefault();
+  
   formStatus.classList.remove("is-error");
-  if (GOOGLE_SHEET_WEB_APP_URL.includes("PASTE_YOUR")) {
-    formStatus.textContent = "The enquiry form is not connected yet. Please add the Google Apps Script web app URL.";
-    formStatus.classList.add("is-error");
-    return;
-  }
 
   const submitButton = enquiryForm.querySelector('button[type="submit"]');
+  
   const formData = new URLSearchParams(new FormData(enquiryForm));
   formData.append("submittedAt", new Date().toISOString());
   formData.append("page", window.location.href);
+  
   submitButton.disabled = true;
   formStatus.textContent = "Sending your enquiry...";
+  
   try {
-    await fetch(GOOGLE_SHEET_WEB_APP_URL, { method: "POST", mode: "no-cors", body: formData });
+
+    await fetch(
+      GOOGLE_SHEET_WEB_APP_URL, 
+      { 
+        method: "POST", 
+        mode: "no-cors", 
+        body: formData 
+      }
+    );
+    
     enquiryForm.reset();
+    
     formStatus.textContent = "Thank you. Your enquiry has been received.";
+  
   } catch (error) {
+
     formStatus.textContent = "Something went wrong. Please try again or email us directly.";
     formStatus.classList.add("is-error");
+  
   } finally {
     submitButton.disabled = false;
   }
