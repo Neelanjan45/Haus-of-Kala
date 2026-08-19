@@ -10,7 +10,6 @@ const routes = {
   contact: "/contact",
   "brand-selvora": "/selvora",
   "coming-soon": "/coming-soon",
-  "brand-coming-soon": "/coming-soon",
 };
 
 const paths = Object.fromEntries(
