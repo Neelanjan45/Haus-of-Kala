@@ -7,6 +7,8 @@ const routes = {
   home: "/",
   house: "/house",
   products: "/products",
+  "starter-kit": "/starter-kit",
+  cart: "/cart",
   contact: "/contact",
   "brand-selvora": "/selvora",
   "coming-soon": "/coming-soon",
@@ -208,3 +210,68 @@ enquiryForm.addEventListener("submit", async event => {
     submitButton.disabled = false;
   }
 });
+
+const kitOptions = document.getElementById("kitOptions");
+const kitCards = document.querySelectorAll(".kit-card");
+const cartCount = document.querySelector(".cart-count");
+const cartEmpty = document.getElementById("cartEmpty");
+const cartItems = document.getElementById("cartItems");
+const cartEnquire = document.getElementById("cartEnquire");
+const CART_STORAGE_KEY = "haus-of-kala-cart";
+let cart = JSON.parse(localStorage.getItem(CART_STORAGE_KEY) || "[]");
+
+function setActiveKit(card) {
+  kitCards.forEach(item => item.classList.toggle("is-active", item === card));
+  kitOptions.classList.toggle("show-custom", card.dataset.kit === "custom");
+}
+
+kitCards.forEach(card => {
+  card.addEventListener("click", event => {
+    if (!event.target.closest(".add-to-cart")) setActiveKit(card);
+  });
+  card.addEventListener("keydown", event => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      setActiveKit(card);
+    }
+  });
+});
+
+function renderCart() {
+  cartCount.textContent = cart.length;
+  cartEmpty.hidden = cart.length > 0;
+  cartEnquire.hidden = cart.length > 0;
+  document.querySelectorAll(".add-to-cart").forEach(button => {
+    const isAdded = cart.some(item => item.name === button.dataset.kitName);
+    button.disabled = isAdded;
+    button.textContent = isAdded ? "Added to cart" : "Add to cart";
+  });
+  cartItems.innerHTML = cart.map((item, index) => `
+    <article class="cart-item">
+      <span class="cart-item-index">0${index + 1}</span>
+      <div><h3>${item.name}</h3><p>Perfumery Starter Kit</p></div>
+      <button type="button" class="cart-remove" data-cart-index="${index}">Remove</button>
+    </article>
+  `).join("");
+}
+
+document.querySelectorAll(".add-to-cart").forEach(button => {
+  button.addEventListener("click", () => {
+    const name = button.dataset.kitName;
+    if (!cart.some(item => item.name === name)) {
+      cart.push({ name });
+      localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
+    }
+    renderCart();
+  });
+});
+
+cartItems.addEventListener("click", event => {
+  const removeButton = event.target.closest(".cart-remove");
+  if (!removeButton) return;
+  cart.splice(Number(removeButton.dataset.cartIndex), 1);
+  localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
+  renderCart();
+});
+
+renderCart();

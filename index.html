@@ -107,6 +107,18 @@
       <span class="nav-label">Enquire</span>
     </div>
 
+    <div class="nav-item" data-view="cart">
+      <button aria-label="Cart">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+          <path d="M4 5h2l1.7 10.2h9.8L20 8H7"/>
+          <circle cx="9.5" cy="19" r="1"/>
+          <circle cx="17" cy="19" r="1"/>
+        </svg>
+        <span class="cart-count" aria-label="Items in cart">0</span>
+      </button>
+      <span class="nav-label">Cart</span>
+    </div>
+
   </nav>
 
 
@@ -252,7 +264,7 @@
 
       <div class="product-list">
 
-        <a href="/coming-soon" class="product-entry">
+        <a href="/starter-kit" class="product-entry">
           <div class="product-main">
             <h3>Perfumery Starter Kit</h3>
             <p>
@@ -266,6 +278,68 @@
     </div>
 
     <div class="watermark">MADE</div>
+  </section>
+
+
+  <!-- STARTER KIT DETAIL -->
+  <section class="view left-nav kit-view" data-page="starter-kit">
+    <a href="/" class="corner-logo">Haus of Kala</a>
+
+    <div class="kit-view-inner">
+      <div class="kit-view-heading">
+        <div class="kicker">Haus of Kala / Perfumery</div>
+        <!-- <h1>Choose your way in</h1> -->
+        <!-- <p>Begin with the house selection, or assemble a kit that follows your own nose.</p> -->
+      </div>
+
+      <div class="kit-options" id="kitOptions">
+        <article class="kit-card is-active" data-kit="haus" tabindex="0">
+          <div class="kit-card-rail"><span>01</span><h2>Haus of Kala Kit</h2></div>
+          <div class="kit-card-body">
+            <p class="kit-card-intro">A considered first collection, balanced to introduce the language of scent.</p>
+            <div class="kit-list-title">Inside the kit</div>
+            <ul class="kit-list">
+              <li>Bergamot</li><li>Lavender</li><li>Neroli</li><li>Rose accord</li>
+              <li>Cedarwood</li><li>Sandalwood</li><li>Vanilla</li><li>Soft musk</li>
+            </ul>
+            <button type="button" class="minimal-button add-to-cart" data-kit-name="Haus of Kala Kit">Add to cart &rarr;</button>
+          </div>
+        </article>
+
+        <article class="kit-card" data-kit="custom" tabindex="0">
+          <div class="kit-card-rail"><span>02</span><h2>Make your own Kit</h2></div>
+          <div class="kit-card-body">
+            <p class="kit-card-intro">Start with your instincts. Select materials from the families that call to you.</p>
+            <div class="kit-list-title">Choose from</div>
+            <ul class="kit-list">
+              <li>Citrus and green notes</li><li>Florals and soft spices</li><li>Woods and resins</li><li>Musks and warm bases</li>
+            </ul>
+            <button type="button" class="minimal-button add-to-cart" data-kit-name="Make your own Kit">Add to cart &rarr;</button>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <div class="watermark">SCENT</div>
+  </section>
+
+
+  <!-- CART -->
+  <section class="view left-nav cart-view" data-page="cart">
+    <a href="/" class="corner-logo">Haus of Kala</a>
+    <div class="view-inner cart-layout">
+      <div>
+        <div class="kicker">Your selection</div>
+        <h1 class="title">The cart.</h1>
+        <p class="copy">Your chosen kit will stay here while you continue exploring the house.</p>
+      </div>
+      <div class="cart-content">
+        <div class="cart-empty" id="cartEmpty">Nothing has found its way here yet.</div>
+        <div class="cart-items" id="cartItems"></div>
+        <a href="/products" class="minimal-button cart-enquire" id="cartEnquire">Discover Products &rarr;</a>
+      </div>
+    </div>
+    <div class="watermark">YOURS</div>
   </section>
 
 
