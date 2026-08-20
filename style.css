@@ -221,7 +221,12 @@ a{text-decoration:none}
 }
 
 .view-inner{
-  width:min(1100px,100%);
+  display:grid;
+  width: 100%;
+  max-width: 1400px;
+  grid-template-columns: 1.1fr .9fr;
+  gap: clamp(48px, 6vw, 110px);
+  align-items:center;
   margin:auto
 }
 
@@ -253,7 +258,7 @@ a{text-decoration:none}
 .title{
   max-width:850px;
   font-family:var(--serif);
-  font-size:clamp(4rem,8vw,8rem);
+  font-size:clamp(3.6rem, 6.8vw, 6.8rem);
   font-weight:400;
   line-height:.82;
   letter-spacing:-.04em;
@@ -271,18 +276,14 @@ a{text-decoration:none}
 /* =========================================================
    HOUSE
    ========================================================= */
-.house{
+/* .house{
   display:grid;
   width: 100%;
   max-width: 1400px;
   grid-template-columns: 1.1fr .9fr;
   gap: clamp(48px, 6vw, 110px);
   align-items:center
-}
-
-.house .title {
-  font-size: clamp(3.6rem, 6.8vw, 6.8rem);
-}
+} */
 
 .statement{
   width:91%;
@@ -389,29 +390,23 @@ a{text-decoration:none}
 /* =========================================================
    HAUS OF KALĀ PRODUCTS
    ========================================================= */
-.products-layout{
+/* .products-layout{
   display:grid;
   grid-template-columns:.85fr 1.15fr;
   gap:8vw;
   align-items:center
-}
+} */
 .products-intro{align-self:center}
 .product-list{border-top:1px solid #bbb}
 .product-entry{
   display:grid;
-  grid-template-columns:48px 1fr auto;
-  gap:22px;
   align-items:center;
   padding:22px 0;
   border-bottom:1px solid var(--line);
   transition:padding .3s var(--ease)
 }
 .product-entry:hover{padding-left:8px}
-.product-index{
-  color:var(--grey);
-  font-size:.6rem;
-  letter-spacing:.12em
-}
+
 .product-main h3{
   font-family:var(--serif);
   font-size:2rem;
@@ -424,13 +419,6 @@ a{text-decoration:none}
   color:#777;
   font-size:.75rem;
   line-height:1.5
-}
-.product-status{
-  color:var(--grey);
-  font-size:.58rem;
-  letter-spacing:.1em;
-  text-transform:uppercase;
-  white-space:nowrap
 }
 
 /* =========================================================
