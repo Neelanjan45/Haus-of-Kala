@@ -58,7 +58,7 @@
     </div> -->
 
     <!-- Haus of Kalā Products -->
-    <div class="nav-item" data-view="coming-soon">
+    <div class="nav-item" data-view="products">
       <button aria-label="Haus of Kalā Products">
         <!-- PLACEHOLDER ICON — replace later with a custom product-house icon -->
         <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
@@ -105,6 +105,18 @@
         </svg>
       </button>
       <span class="nav-label">Enquire</span>
+    </div>
+
+    <div class="nav-item" data-view="cart">
+      <button aria-label="Cart">
+        <svg class="nav-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2">
+          <path d="M4 5h2l1.7 10.2h9.8L20 8H7"/>
+          <circle cx="9.5" cy="19" r="1"/>
+          <circle cx="17" cy="19" r="1"/>
+        </svg>
+        <span class="cart-count" aria-label="Items in cart">0</span>
+      </button>
+      <span class="nav-label">Cart</span>
     </div>
 
   </nav>
@@ -243,54 +255,23 @@
       <div class="products-intro">
         <div class="kicker">Haus of Kalā / Products</div>
 
-        <h1 class="title">
-          Things made<br>
-          by the house.
-        </h1>
+        <h1 class="title">From the House</h1>
 
         <p class="copy">
-          Products created directly under Haus of Kalā — separate from our
-          independent brands. Some are available now, while others are being
-          developed for the future.
+          A collection of objects made by the house, in small and considered ways. From tools for exploration to objects that alter the atmosphere of a room.
         </p>
       </div>
 
       <div class="product-list">
 
-        <a href="/coming-soon" class="product-entry">
-          <div class="product-index">01</div>
+        <a href="/starter-kit" class="product-entry">
           <div class="product-main">
             <h3>Perfumery Starter Kit</h3>
-            <p>[Placeholder — short description of the starter kit, what it contains and who it is intended for.]</p>
+            <p>
+              An invitation to slow down, experiment and see where scent takes you.
+              Everything needed for exploring the fundamentals of perfumery; a curated collection of perfume materials, practical tools and a simple guide to making your first composition.
+            </p>
           </div>
-          <div class="product-status">Available</div>
-        </a>
-
-        <a href="/coming-soon" class="product-entry">
-          <div class="product-index">02</div>
-          <div class="product-main">
-            <h3>Room Spray</h3>
-            <p>[Placeholder — short description of the upcoming room spray.]</p>
-          </div>
-          <div class="product-status">Upcoming</div>
-        </a>
-
-        <a href="/coming-soon" class="product-entry">
-          <div class="product-index">03</div>
-          <div class="product-main">
-            <h3>Fabric Mist</h3>
-            <p>[Placeholder — short description of the upcoming fabric mist.]</p>
-          </div>
-          <div class="product-status">Upcoming</div>
-        </a>
-
-        <a href="/coming-soon" class="product-entry">
-          <div class="product-index">04</div>
-          <div class="product-main">
-            <h3>[Future Product]</h3>
-            <p>[Placeholder — future Haus of Kalā product.]</p>
-          </div>
-          <div class="product-status">In Development</div>
         </a>
 
       </div>
@@ -298,6 +279,263 @@
 
     <div class="watermark">MADE</div>
   </section>
+
+
+  <!-- STARTER KIT DETAIL -->
+  <section class="view left-nav kit-view" data-page="starter-kit">
+    <a href="/" class="corner-logo">Haus of Kala</a>
+
+    <div class="kit-view-inner">
+      <div class="kit-view-heading">
+        <div class="kicker">Haus of Kala / Perfumery</div>
+        <!-- <h1>Choose your way in</h1> -->
+        <!-- <p>Begin with the house selection, or assemble a kit that follows your own nose.</p> -->
+      </div>
+
+      <div class="kit-options" id="kitOptions">
+        <article class="kit-card is-active" data-kit="haus" tabindex="0">
+          <div class="kit-card-rail">
+            <div class="kit-card-title-group">
+              <span>01</span>
+              <h2>Haus of Kala Kit</h2>
+            </div>
+
+            <div class="kit-card-actions">
+              <div class="kit-card-price" id="hausKitPrice">—</div>
+
+              <button
+                type="button"
+                class="minimal-button add-to-cart kit-header-button"
+                data-kit-name="Haus of Kala Kit"
+              >
+                Add to cart
+              </button>
+            </div>
+          </div>
+          <div class="kit-card-body">
+            <p class="kit-card-intro">A considered first collection, balanced to introduce the language of scent.</p>
+            <div class="kit-list-title">Inside the kit</div>
+            <div class="kit-data-scroll">
+              <ul class="kit-list" id="hausKitIngredients">
+                <li class="kit-loading">Loading the house selection…</li>
+              </ul>
+            </div>
+          </div>
+        </article>
+
+        <article class="kit-card" data-kit="custom" tabindex="0">
+          <div class="kit-card-rail">
+            <div class="kit-card-title-group">
+              <span>02</span>
+              <h2>Make your own Kit</h2>
+            </div>
+
+            <div class="kit-card-actions">
+              <div class="kit-card-price" id="customKitPrice">₹0</div>
+
+              <button
+                class="minimal-button add-to-cart kit-header-button"
+                id="addCustomKitToCart"
+                data-kit-name="Make your own Kit"
+                disabled
+              >
+                Add to cart
+              </button>
+            </div>
+          </div>
+          <div class="kit-card-body">
+            <p class="kit-card-intro">Start with your instincts. Select materials from the families that call to you.</p>
+            <div class="custom-builder">
+              <div class="custom-ingredients">
+                <div class="kit-list-title">Choose ingredients</div>
+                <div class="accordion-scroll" id="ingredientAccordions">
+                  <div class="kit-loading">Loading ingredients…</div>
+                </div>
+              </div>
+              <div class="custom-selection">
+                <div class="selection-heading">
+                  <div class="kit-list-title">Your selection</div>
+                  <div class="selection-total" id="customSelectionTotal">₹0</div>
+                </div>
+                <div class="selection-scroll" id="customSelectionList">
+                  <div class="selection-empty">Nothing selected yet.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+
+    <div class="watermark">SCENT</div>
+  </section>
+
+
+  <!-- CART -->
+  <section class="view left-nav cart-view" data-page="cart">
+    <a href="/" class="corner-logo">Haus of Kalā</a>
+    <div class="view-inner cart-layout">
+      <div>
+        <div class="kicker">Your selection</div>
+        <h1 class="title">The cart.</h1>
+        <p class="copy">Your chosen kit will stay here while you continue exploring the house.</p>
+      </div>
+      <div class="cart-content">
+        <div class="cart-empty" id="cartEmpty">Nothing has found its way here yet.</div>
+
+        <div class="cart-items" id="cartItems"></div>
+
+        <button type="button" class="minimal-button cart-submit" id="cartSubmit" hidden>
+          Submit order &rarr;
+        </button>
+
+        <a href="/products" class="minimal-button cart-enquire" id="cartEnquire">Discover Products &rarr;</a>
+      </div>
+    </div>
+    <div class="watermark">YOURS</div>
+  </section>
+
+
+  <!-- ORDER MODAL -->
+  <div class="enquiry-modal order-modal" id="orderModal" role="dialog" aria-modal="true" aria-labelledby="orderTitle"
+    aria-hidden="true">
+    <div class="enquiry-backdrop" data-order-close></div>
+  
+    <div class="enquiry-panel order-panel">
+  
+      <button type="button" class="enquiry-close" aria-label="Close order form" data-order-close>
+        &times;
+      </button>
+  
+      <div class="kicker">Complete your request</div>
+  
+      <h2 id="orderTitle">
+        Almost there.
+      </h2>
+  
+      <p class="enquiry-intro">
+        Leave your details below. We will review your selection and contact you with payment details.
+      </p>
+  
+  
+      <!-- ORDER SUMMARY -->
+      <div class="order-summary">
+  
+        <div class="order-summary-heading">
+          <span>Your selection</span>
+  
+          <strong id="orderSummaryTotal">
+            ₹0
+          </strong>
+        </div>
+  
+        <div class="order-summary-items" id="orderSummaryItems"></div>
+  
+      </div>
+  
+  
+      <form id="orderForm" class="enquiry-form">
+  
+        <div class="form-field">
+          <label for="orderName">
+            Name
+          </label>
+  
+          <input id="orderName" name="name" type="text" autocomplete="name" required>
+        </div>
+  
+  
+        <div class="form-field">
+          <label for="orderEmail">
+            Email
+          </label>
+  
+          <input id="orderEmail" name="email" type="email" autocomplete="email" required>
+        </div>
+  
+  
+        <div class="form-field">
+          <label for="orderPhone">
+            Phone / WhatsApp
+          </label>
+  
+          <input id="orderPhone" name="phone" type="tel" autocomplete="tel" required>
+        </div>
+  
+  
+        <div class="form-field">
+          <label for="orderAddress">
+            Shipping address
+          </label>
+  
+          <textarea id="orderAddress" name="address" rows="3" autocomplete="street-address" required></textarea>
+        </div>
+  
+  
+        <div class="order-address-grid">
+  
+          <div class="form-field">
+            <label for="orderCity">
+              City
+            </label>
+  
+            <input id="orderCity" name="city" type="text" autocomplete="address-level2" required>
+          </div>
+  
+  
+          <div class="form-field">
+            <label for="orderState">
+              State
+            </label>
+  
+            <input id="orderState" name="state" type="text" autocomplete="address-level1" required>
+          </div>
+  
+        </div>
+  
+  
+        <div class="order-address-grid">
+  
+          <div class="form-field">
+            <label for="orderPincode">
+              PIN code
+            </label>
+  
+            <input id="orderPincode" name="pincode" type="text" inputmode="numeric" autocomplete="postal-code" required>
+          </div>
+  
+  
+          <div class="form-field">
+            <label for="orderCountry">
+              Country
+            </label>
+  
+            <input id="orderCountry" name="country" type="text" value="India" autocomplete="country-name" required>
+          </div>
+  
+        </div>
+  
+  
+        <div class="form-field">
+          <label for="orderNote">
+            Note
+            <span>(optional)</span>
+          </label>
+  
+          <textarea id="orderNote" name="note" rows="3"></textarea>
+        </div>
+  
+  
+        <button type="submit" class="minimal-button enquiry-submit">
+          Submit order &rarr;
+        </button>
+  
+        <p class="form-status" id="orderStatus" role="status" aria-live="polite"></p>
+  
+      </form>
+  
+    </div>
+  </div>
 
 
   <!-- COMING SOON -->
