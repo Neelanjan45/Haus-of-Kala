@@ -637,7 +637,7 @@ a{text-decoration:none}
   min-height:20px;
   margin-top:16px;
   color:#5f655f;
-  font-size:.72rem;
+  font-size:.8rem;
   line-height:1.5;
 }
 .form-status.is-error{
@@ -1235,8 +1235,9 @@ a{text-decoration:none}
   cursor: pointer
 }
 
-.cart-enquire[hidden] {
-  display: none
+.cart-enquire[hidden],
+.cart-submit[hidden] {
+  display: none !important;
 }
 
 /* =========================================================

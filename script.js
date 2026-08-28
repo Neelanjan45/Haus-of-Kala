@@ -72,37 +72,6 @@ function loadFromPath() {
   }
 }
 
-// function openView(name) {
-//   const target = document.querySelector('[data-page="' + name + '"]');
-//   if (!target) return;
-
-//   home.classList.add("hidden");
-
-//   views.forEach(view => {
-//     view.classList.toggle("active", view === target);
-//   });
-
-//   navItems.forEach(item => {
-//     item.classList.toggle("active", item.dataset.view === name);
-//   });
-
-//   brandItems.forEach(item => {
-//     item.classList.toggle("active", "brand-" + item.dataset.brand === name);
-//   });
-
-//   history.replaceState(null, "", "#" + name);
-// }
-
-// function goHome() {
-//   home.classList.remove("hidden");
-
-//   views.forEach(view => view.classList.remove("active"));
-//   navItems.forEach(item => item.classList.remove("active"));
-//   brandItems.forEach(item => item.classList.remove("active"));
-
-//   history.replaceState(null, "", "#home");
-// }
-
 navItems.forEach((item) => {
   item.addEventListener("click", () => openView(item.dataset.view));
 });
@@ -232,17 +201,11 @@ const addCustomKitButton = document.getElementById("addCustomKitToCart");
 const cartEnquire = document.getElementById("cartEnquire");
 const CART_STORAGE_KEY = "haus-of-kala-cart";
 const cartSubmit = document.getElementById("cartSubmit");
-
 const orderModal = document.getElementById("orderModal");
-
 const orderForm = document.getElementById("orderForm");
-
 const orderStatus = document.getElementById("orderStatus");
-
 const orderSummaryItems = document.getElementById("orderSummaryItems");
-
 const orderSummaryTotal = document.getElementById("orderSummaryTotal");
-
 const orderCloseControls = document.querySelectorAll("[data-order-close]");
 
 let lastOrderFocusedElement;
