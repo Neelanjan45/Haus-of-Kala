@@ -373,7 +373,7 @@
 
   <!-- CART -->
   <section class="view left-nav cart-view" data-page="cart">
-    <a href="/" class="corner-logo">Haus of Kala</a>
+    <a href="/" class="corner-logo">Haus of Kalā</a>
     <div class="view-inner cart-layout">
       <div>
         <div class="kicker">Your selection</div>
@@ -382,12 +382,160 @@
       </div>
       <div class="cart-content">
         <div class="cart-empty" id="cartEmpty">Nothing has found its way here yet.</div>
+
         <div class="cart-items" id="cartItems"></div>
+
+        <button type="button" class="minimal-button cart-submit" id="cartSubmit" hidden>
+          Submit order &rarr;
+        </button>
+
         <a href="/products" class="minimal-button cart-enquire" id="cartEnquire">Discover Products &rarr;</a>
       </div>
     </div>
     <div class="watermark">YOURS</div>
   </section>
+
+
+  <!-- ORDER MODAL -->
+  <div class="enquiry-modal order-modal" id="orderModal" role="dialog" aria-modal="true" aria-labelledby="orderTitle"
+    aria-hidden="true">
+    <div class="enquiry-backdrop" data-order-close></div>
+  
+    <div class="enquiry-panel order-panel">
+  
+      <button type="button" class="enquiry-close" aria-label="Close order form" data-order-close>
+        &times;
+      </button>
+  
+      <div class="kicker">Complete your request</div>
+  
+      <h2 id="orderTitle">
+        Almost there.
+      </h2>
+  
+      <p class="enquiry-intro">
+        Leave your details below. We will review your selection and contact you with payment details.
+      </p>
+  
+  
+      <!-- ORDER SUMMARY -->
+      <div class="order-summary">
+  
+        <div class="order-summary-heading">
+          <span>Your selection</span>
+  
+          <strong id="orderSummaryTotal">
+            ₹0
+          </strong>
+        </div>
+  
+        <div class="order-summary-items" id="orderSummaryItems"></div>
+  
+      </div>
+  
+  
+      <form id="orderForm" class="enquiry-form">
+  
+        <div class="form-field">
+          <label for="orderName">
+            Name
+          </label>
+  
+          <input id="orderName" name="name" type="text" autocomplete="name" required>
+        </div>
+  
+  
+        <div class="form-field">
+          <label for="orderEmail">
+            Email
+          </label>
+  
+          <input id="orderEmail" name="email" type="email" autocomplete="email" required>
+        </div>
+  
+  
+        <div class="form-field">
+          <label for="orderPhone">
+            Phone / WhatsApp
+          </label>
+  
+          <input id="orderPhone" name="phone" type="tel" autocomplete="tel" required>
+        </div>
+  
+  
+        <div class="form-field">
+          <label for="orderAddress">
+            Shipping address
+          </label>
+  
+          <textarea id="orderAddress" name="address" rows="3" autocomplete="street-address" required></textarea>
+        </div>
+  
+  
+        <div class="order-address-grid">
+  
+          <div class="form-field">
+            <label for="orderCity">
+              City
+            </label>
+  
+            <input id="orderCity" name="city" type="text" autocomplete="address-level2" required>
+          </div>
+  
+  
+          <div class="form-field">
+            <label for="orderState">
+              State
+            </label>
+  
+            <input id="orderState" name="state" type="text" autocomplete="address-level1" required>
+          </div>
+  
+        </div>
+  
+  
+        <div class="order-address-grid">
+  
+          <div class="form-field">
+            <label for="orderPincode">
+              PIN code
+            </label>
+  
+            <input id="orderPincode" name="pincode" type="text" inputmode="numeric" autocomplete="postal-code" required>
+          </div>
+  
+  
+          <div class="form-field">
+            <label for="orderCountry">
+              Country
+            </label>
+  
+            <input id="orderCountry" name="country" type="text" value="India" autocomplete="country-name" required>
+          </div>
+  
+        </div>
+  
+  
+        <div class="form-field">
+          <label for="orderNote">
+            Note
+            <span>(optional)</span>
+          </label>
+  
+          <textarea id="orderNote" name="note" rows="3"></textarea>
+        </div>
+  
+  
+        <button type="submit" class="minimal-button enquiry-submit">
+          Submit order &rarr;
+        </button>
+  
+        <p class="form-status" id="orderStatus" role="status" aria-live="polite"></p>
+  
+      </form>
+  
+    </div>
+  </div>
 
 
   <!-- COMING SOON -->

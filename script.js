@@ -131,24 +131,10 @@ document.querySelectorAll('a[href^="/"]').forEach((link) => {
   });
 });
 
-// function loadFromHash() {
-//   const hash = window.location.hash.replace("#", "");
-
-//   if (hash && hash !== "home") {
-//     openView(hash);
-//   } else {
-//     goHome();
-//   }
-// }
-
-// window.addEventListener("hashchange", loadFromHash);
-// loadFromHash();
-
 window.addEventListener("popstate", loadFromPath);
 loadFromPath();
 
-const GOOGLE_SHEET_WEB_APP_URL =
-  "https://script.google.com/macros/s/AKfycbwJlKyjMkLvzDksNRyDUOeb7RnYrhu6QjDh8rp4SEC8Uj_duOjJI0J5Zc6D3EnB4OKjEg/exec";
+const GOOGLE_SHEET_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbx4aupIPrp6w62avT-3Tc7f1zFGUl8fDy0esInS7EUhLkSTldm94Tzuf3uO2Ou5FVWjKg/exec";
 const enquiryModal = document.getElementById("enquiryModal");
 const enquiryForm = document.getElementById("enquiryForm");
 const formStatus = document.getElementById("formStatus");
@@ -180,8 +166,16 @@ enquiryCloseControls.forEach((control) =>
 );
 
 window.addEventListener("keydown", (event) => {
-  if (event.key === "Escape" && enquiryModal.classList.contains("is-open"))
+  if (event.key !== "Escape") return;
+
+  if (orderModal.classList.contains("is-open")) {
+    closeOrderModal();
+    return;
+  }
+
+  if (enquiryModal.classList.contains("is-open")) {
     closeEnquiryModal();
+  }
 });
 
 enquiryForm.addEventListener("submit", async (event) => {
@@ -192,6 +186,12 @@ enquiryForm.addEventListener("submit", async (event) => {
   const submitButton = enquiryForm.querySelector('button[type="submit"]');
 
   const formData = new URLSearchParams(new FormData(enquiryForm));
+
+  formData.append(
+    "type",
+    "enquiry",
+  );
+
   formData.append("submittedAt", new Date().toISOString());
   formData.append("page", window.location.href);
 
@@ -217,13 +217,11 @@ enquiryForm.addEventListener("submit", async (event) => {
   }
 });
 
-const KIT_DATA_WEB_APP_URL = "https://script.google.com/macros/s/AKfycbx4aupIPrp6w62avT-3Tc7f1zFGUl8fDy0esInS7EUhLkSTldm94Tzuf3uO2Ou5FVWjKg/exec";
 const kitOptions = document.getElementById("kitOptions");
 const kitCards = document.querySelectorAll(".kit-card");
 const cartCount = document.querySelector(".cart-count");
 const cartEmpty = document.getElementById("cartEmpty");
 const cartItems = document.getElementById("cartItems");
-const cartEnquire = document.getElementById("cartEnquire");
 const hausKitPriceEl = document.getElementById("hausKitPrice");
 const customKitPriceEl = document.getElementById("customKitPrice");
 const hausKitIngredientsEl = document.getElementById("hausKitIngredients");
@@ -231,7 +229,23 @@ const ingredientAccordionsEl = document.getElementById("ingredientAccordions");
 const customSelectionListEl = document.getElementById("customSelectionList");
 const customSelectionTotalEl = document.getElementById("customSelectionTotal");
 const addCustomKitButton = document.getElementById("addCustomKitToCart");
+const cartEnquire = document.getElementById("cartEnquire");
 const CART_STORAGE_KEY = "haus-of-kala-cart";
+const cartSubmit = document.getElementById("cartSubmit");
+
+const orderModal = document.getElementById("orderModal");
+
+const orderForm = document.getElementById("orderForm");
+
+const orderStatus = document.getElementById("orderStatus");
+
+const orderSummaryItems = document.getElementById("orderSummaryItems");
+
+const orderSummaryTotal = document.getElementById("orderSummaryTotal");
+
+const orderCloseControls = document.querySelectorAll("[data-order-close]");
+
+let lastOrderFocusedElement;
 
 let catalog = [];
 let hausKit = { price: 0, ingredients: [] };
@@ -285,13 +299,13 @@ kitCards.forEach((card) => {
 });
 
 async function loadKitData() {
-  if (KIT_DATA_WEB_APP_URL.includes("PASTE_YOUR")) {
+  if (GOOGLE_SHEET_WEB_APP_URL.includes("PASTE_YOUR")) {
     return renderKitDataError(
       "Connect the kit data Apps Script to load ingredients and prices.",
     );
   }
   try {
-    const response = await fetch(KIT_DATA_WEB_APP_URL);
+    const response = await fetch(GOOGLE_SHEET_WEB_APP_URL);
     const data = await response.json();
     if (!data.ok) throw new Error(data.error || "Unable to load kit data.");
     catalog = Array.isArray(data.items) ? data.items : [];
@@ -321,61 +335,6 @@ function renderHausKit(hausKit) {
     ? hausKit.ingredients.map((x) => `<li>${esc(x.name)}</li>`).join("")
     : `<li class="kit-loading">The house selection is being prepared.</li>`;
 }
-
-// function renderIngredientAccordions(
-//   items = catalog,
-//   openCategories = []
-// ) {
-//   const groups = items.reduce((result, item) => {
-//     const category = item.category || "Other";
-
-//     if (!result[category]) {
-//       result[category] = [];
-//     }
-
-//     result[category].push(item);
-
-//     return result;
-//   }, {});
-
-//   const names = Object.keys(groups);
-
-//   ingredientAccordionsEl.innerHTML = names.length
-//     ? names
-//         .map((category, index) => {
-//           const shouldBeOpen =
-//             openCategories.length
-//               ? openCategories.includes(category)
-//               : index === 0;
-
-//           return `
-//             <details
-//               class="ingredient-accordion"
-//               ${shouldBeOpen ? "open" : ""}
-//             >
-//               <summary>
-//                 <span>${esc(category)}</span>
-
-//                 <span class="ingredient-count">
-//                   ${groups[category].length} ITEMS
-//                 </span>
-//               </summary>
-
-//               <div>
-//                 ${groups[category]
-//                   .map(renderIngredientRow)
-//                   .join("")}
-//               </div>
-//             </details>
-//           `;
-//         })
-//         .join("")
-//     : `
-//         <div class="kit-loading">
-//           No ingredients are available yet.
-//         </div>
-//       `;
-// }
 
 function renderIngredientAccordions(items = catalog) {
   const groups = items.reduce((a, item) => {
@@ -733,8 +692,16 @@ addCustomKitButton.addEventListener("click", addCustomKit);
 
 function renderCart() {
   cartCount.textContent = cart.length;
-  cartEmpty.hidden = cart.length > 0;
-  cartEnquire.hidden = cart.length > 0;
+
+  const hasItems = cart.length > 0;
+
+  cartEmpty.hidden = hasItems;
+
+  /* Empty cart */
+  cartEnquire.hidden = hasItems;
+
+  /* Cart contains items */
+  cartSubmit.hidden = !hasItems;
   const hausButton = document.querySelector(
     '.add-to-cart[data-kit-name="Haus of Kala Kit"]',
   );
@@ -768,6 +735,266 @@ cartItems.addEventListener("click", (e) => {
   saveCart();
   renderCart();
 });
+
+function openOrderModal() {
+  if (!cart.length) return;
+
+  lastOrderFocusedElement =
+    document.activeElement;
+
+  renderOrderSummary();
+
+  orderStatus.textContent = "";
+
+  orderStatus.classList.remove(
+    "is-error",
+  );
+
+  const submitButton =
+    orderForm.querySelector(
+      'button[type="submit"]',
+    );
+
+  submitButton.style.display = "";
+  submitButton.disabled = false;
+
+  orderModal.classList.add("is-open");
+
+  orderModal.setAttribute(
+    "aria-hidden",
+    "false",
+  );
+
+  document.body.style.overflow = "hidden";
+
+  requestAnimationFrame(() => {
+    document.getElementById(
+      "orderName",
+    ).focus();
+  });
+}
+
+function closeOrderModal() {
+  orderModal.classList.remove("is-open");
+
+  orderModal.setAttribute(
+    "aria-hidden",
+    "true",
+  );
+
+  document.body.style.overflow = "";
+
+  lastOrderFocusedElement?.focus();
+}
+
+cartSubmit.addEventListener(
+  "click",
+  openOrderModal,
+);
+
+orderCloseControls.forEach((control) => {
+  control.addEventListener(
+    "click",
+    closeOrderModal,
+  );
+});
+
+function cartTotal() {
+  return cart.reduce(
+    (total, item) =>
+      total + Number(item.price || 0),
+    0,
+  );
+}
+
+
+function renderOrderSummary() {
+  const total = cartTotal();
+
+  orderSummaryTotal.textContent =
+    formatPrice(total);
+
+  orderSummaryItems.innerHTML = cart
+    .map((item) => {
+      const ingredients =
+        Array.isArray(item.ingredients)
+          ? item.ingredients
+          : [];
+
+      const ingredientText =
+        ingredients.length
+          ? ingredients
+              .map((ingredient) => {
+                const quantity =
+                  ingredient.quantity
+                    ? ` — ${ingredient.quantity} ${esc(
+                        ingredient.unit || "",
+                      )}`
+                    : "";
+
+                return `${esc(
+                  ingredient.name,
+                )}${quantity}`;
+              })
+              .join(", ")
+          : "Haus of Kalā selection";
+
+      return `
+        <div class="order-summary-item">
+
+          <div>
+
+            <h4>
+              ${esc(item.name)}
+            </h4>
+
+            <p>
+              ${ingredientText}
+            </p>
+
+          </div>
+
+          <div class="order-summary-price">
+            ${formatPrice(item.price)}
+          </div>
+
+        </div>
+      `;
+    })
+    .join("");
+}
+
+orderForm.addEventListener(
+  "submit",
+  async (event) => {
+    event.preventDefault();
+
+    if (!cart.length) {
+      orderStatus.textContent =
+        "Your cart is currently empty.";
+
+      orderStatus.classList.add(
+        "is-error",
+      );
+
+      return;
+    }
+
+    orderStatus.classList.remove(
+      "is-error",
+    );
+
+    const submitButton =
+      orderForm.querySelector(
+        'button[type="submit"]',
+      );
+
+    const formData =
+      new URLSearchParams(
+        new FormData(orderForm),
+      );
+
+    const orderTotal = cartTotal();
+
+    formData.append(
+      "type",
+      "order",
+    );
+
+    formData.append(
+      "submittedAt",
+      new Date().toISOString(),
+    );
+
+    formData.append(
+      "page",
+      window.location.href,
+    );
+
+    formData.append(
+      "orderTotal",
+      String(orderTotal),
+    );
+
+    formData.append(
+      "itemCount",
+      String(cart.length),
+    );
+
+    /*
+      Send the entire cart as JSON.
+
+      This includes:
+      - kit name
+      - price
+      - selected ingredients
+      - quantity
+      - unit
+    */
+    formData.append(
+      "orderItems",
+      JSON.stringify(cart),
+    );
+
+    submitButton.disabled = true;
+
+    orderStatus.textContent =
+      "Submitting your order...";
+
+    try {
+
+      await fetch(
+        GOOGLE_SHEET_WEB_APP_URL,
+        {
+          method: "POST",
+          mode: "no-cors",
+          body: formData,
+        },
+      );
+
+      /*
+        Clear only after the submission request
+        has been successfully sent.
+      */
+      cart = [];
+
+      localStorage.removeItem(
+        CART_STORAGE_KEY,
+      );
+
+      renderCart();
+
+      orderForm.reset();
+
+      orderStatus.textContent =
+        "Thank you. Your order request has been received. We will contact you soon with payment details.";
+
+      /*
+        Keep the confirmation visible.
+      */
+      submitButton.style.display = "none";
+
+    } catch (error) {
+
+      console.error(
+        "Order submission error:",
+        error,
+      );
+
+      orderStatus.textContent =
+        "Something went wrong. Please try again.";
+
+      orderStatus.classList.add(
+        "is-error",
+      );
+
+    } finally {
+
+      submitButton.disabled = false;
+
+    }
+  },
+);
 
 renderCart();
 loadKitData();
