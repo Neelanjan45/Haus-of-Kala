@@ -424,12 +424,6 @@ function renderIngredientRow(item) {
 
       </div>
 
-      <div class="ingredient-price">
-        ${isSelected
-          ? formatPrice(itemPrice(item, quantity))
-          : formatPrice(0)}
-      </div>
-
     </div>
   `;
 }
