@@ -961,7 +961,7 @@ a{text-decoration:none}
 
 .ingredient-row {
    display: grid;
-   grid-template-columns: minmax(0, 1fr) auto auto;
+   grid-template-columns: minmax(0, 1fr) auto;
    gap: 10px;
    align-items: center;
    padding: 9px 0 11px;
@@ -1323,19 +1323,6 @@ a{text-decoration:none}
   cursor:pointer;
 }
 
-@media(max-width:560px){
-
-  .order-address-grid{
-    grid-template-columns:1fr;
-    gap:0;
-  }
-
-  .order-panel{
-    padding:34px 28px;
-  }
-
-}
-
 /* =========================================================
    COMING SOON
    ========================================================= */
@@ -1433,10 +1420,93 @@ a{text-decoration:none}
   .brand-name-large{font-size:clamp(4rem,18vw,7rem)}
   .brand-image{height:330px;min-height:250px}
   .kit-view-heading h1{font-size:clamp(3.4rem,15vw,5rem)}
-  .kit-options{height:500px;gap:7px}
-  .kit-card{padding:22px}
+
+  .kit-options{
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: 4fr 1fr;
+    gap: 15px;
+    min-height: auto;
+    width: 100%;
+  }
+
+  /* When custom kit is active:
+     Haus becomes the compact card,
+     Custom gets the large space. */
+  .kit-options.show-custom {
+    grid-template-columns: 1fr;
+    grid-template-rows: 1fr 4fr;
+  }
+
+  .kit-card {
+    min-width: 0;
+    min-height: 0;
+    padding: 18px;
+  }
+
+  /*
+     Override the desktop inactive-card behaviour.
+     Desktop uses vertical writing-mode; mobile should not.
+  */
+  .kit-card:not(.is-active) .kit-card-rail {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+  }
+
+  .kit-card:not(.is-active) .kit-card-title-group {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+
+    writing-mode: horizontal-tb;
+    transform: none;
+  }
+
+  /* ---------------------------------------------------------
+     Active card
+     --------------------------------------------------------- */
+
+  .kit-card.is-active .kit-card-body {
+    margin-top: 28px;
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateX(0);
+  }
+
+  /* ---------------------------------------------------------
+     Inactive card
+     --------------------------------------------------------- */
+
+  .kit-card:not(.is-active) .kit-card-body {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(10px);
+  }
+
   .kit-list{grid-template-columns:1fr}
   .kit-card-rail h2{font-size:1.45rem}
   .cart-item{grid-template-columns:34px 1fr;gap:12px}
   .cart-remove{grid-column:2;justify-self:start}
+
+  .order-address-grid{
+    grid-template-columns:1fr;
+    gap:0;
+  }
+
+  .order-panel{
+    padding:34px 28px;
+  }
+
+  .kit-card-rail, .custom-builder {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem
+  }
+
+  .ingredient-meta {
+    font-size: .65rem;
+  }
 }
