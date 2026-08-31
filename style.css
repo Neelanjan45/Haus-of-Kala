@@ -1421,13 +1421,19 @@ a{text-decoration:none}
 }
 
 @media(max-width:560px){
-  .logo-main{font-size:clamp(4rem,18vw,6rem)}
+  .logo-main{
+    line-height: 1;
+  }
   .tagline{padding:0 25px}
   .side-nav.left{left:8px}
   .brand-nav{right:8px}
   .side-nav,.brand-nav{gap:8px}
   .nav-item button,.brand-nav button{width:28px;height:28px}
-  .view{padding:90px 48px 40px}
+
+  .view{
+    padding:90px 48px 40px;
+  }
+
   .corner-logo{top:25px;font-size:1.5rem}
   .view.left-nav .corner-logo{right:20px}
   .view.brand-view .corner-logo{left:20px}
@@ -1438,8 +1444,13 @@ a{text-decoration:none}
   .brand-name-large{font-size:clamp(4rem,18vw,7rem)}
   .brand-image{height:330px;min-height:250px}
   .kit-view-heading h1{font-size:clamp(3.4rem,15vw,5rem)}
+  
   .order-modal {
-    z-index: 200;
+    width: calc(100vw - 24px);
+    max-width: none;
+    left: 12px;
+    right: 12px;
+    margin: 0;
   }
 
   .kit-options{
