@@ -421,6 +421,24 @@ a{text-decoration:none}
   line-height:1.5
 }
 
+.product-proceed {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 18px;
+  padding-bottom: 5px;
+  border-bottom: 1px solid var(--black);
+  font-size: .8rem;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  transition: gap .25s var(--ease);
+}
+
+.product-entry:hover .product-proceed {
+  gap: 16px;
+}
+
 /* =========================================================
    COLLABORATE
    ========================================================= */
@@ -1420,6 +1438,9 @@ a{text-decoration:none}
   .brand-name-large{font-size:clamp(4rem,18vw,7rem)}
   .brand-image{height:330px;min-height:250px}
   .kit-view-heading h1{font-size:clamp(3.4rem,15vw,5rem)}
+  .order-modal {
+    z-index: 200;
+  }
 
   .kit-options{
   display: grid;
